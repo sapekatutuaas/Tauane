@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Problem } from './components/Problem';
-import { Services } from './components/Services';
-import { WhyUs } from './components/WhyUs';
-import { Process } from './components/Process';
-import { Footer } from './components/Footer';
+
+// Lazy loading components that are not immediately visible
+const Problem = lazy(() => import('./components/Problem').then(module => ({ default: module.Problem })));
+const Services = lazy(() => import('./components/Services').then(module => ({ default: module.Services })));
+const WhyUs = lazy(() => import('./components/WhyUs').then(module => ({ default: module.WhyUs })));
+const Process = lazy(() => import('./components/Process').then(module => ({ default: module.Process })));
+const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
 
 function App() {
   return (
@@ -13,12 +15,16 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Problem />
-        <Services />
-        <WhyUs />
-        <Process />
+        <Suspense fallback={<div className="h-20 flex items-center justify-center">Carregando...</div>}>
+          <Problem />
+          <Services />
+          <WhyUs />
+          <Process />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
