@@ -11,7 +11,7 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/direito-da-familia">
       <App />
     </BrowserRouter>
   </React.StrictMode>
