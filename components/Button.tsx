@@ -1,5 +1,5 @@
 import React from 'react';
-import { CONTACT_INFO } from '../constants';
+import { useNavigate } from 'react-router-dom';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -22,7 +22,8 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
   onClick
 }) => {
-  const baseStyles = "inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold transition-all duration-300 rounded shadow-md uppercase tracking-wider transform hover:-translate-y-0.5";
+  const navigate = useNavigate();
+  const baseStyles = "inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold transition-all duration-300 rounded shadow-md uppercase tracking-wider transform hover:-translate-y-0.5 cursor-pointer";
   
   const variants = {
     primary: "bg-brand-gold hover:bg-brand-goldLight text-brand-navy border border-transparent",
@@ -30,16 +31,22 @@ export const Button: React.FC<ButtonProps> = ({
     white: "bg-white text-brand-navy hover:bg-gray-100"
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onClick) {
+      onClick();
+    }
+    navigate('/redirecionamento');
+  };
+
   return (
-    <a 
-      href={CONTACT_INFO.whatsappLink}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button 
       className={`${baseStyles} ${variants[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <WhatsAppIcon />
       <span>{children}</span>
-    </a>
+    </button>
   );
 };
