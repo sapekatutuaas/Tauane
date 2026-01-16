@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Problem } from './components/Problem';
@@ -9,32 +10,7 @@ import { Footer } from './components/Footer';
 import { PaginaRedirecionamento } from './components/PaginaRedirecionamento';
 import { PaginaObrigado } from './components/PaginaObrigado';
 
-function App() {
-  const [view, setView] = useState<'main' | 'redirect' | 'thankyou'>('main');
-
-  useEffect(() => {
-    const handleWhatsAppClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      
-      if (anchor && anchor.href.includes('wa.me') || anchor?.href.includes('whatsapp.com')) {
-        e.preventDefault();
-        setView('redirect');
-      }
-    };
-
-    document.addEventListener('click', handleWhatsAppClick);
-    return () => document.removeEventListener('click', handleWhatsAppClick);
-  }, []);
-
-  if (view === 'redirect') {
-    return <PaginaRedirecionamento onComplete={() => setView('thankyou')} />;
-  }
-
-  if (view === 'thankyou') {
-    return <PaginaObrigado onBack={() => setView('main')} />;
-  }
-
+function MainContent() {
   return (
     <div className="min-h-screen bg-slate-50">
       <Header />
@@ -47,6 +23,33 @@ function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleWhatsAppClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      
+      if (anchor && (anchor.href.includes('wa.me') || anchor?.href.includes('whatsapp.com'))) {
+        e.preventDefault();
+        navigate('/redirecionamento');
+      }
+    };
+
+    document.addEventListener('click', handleWhatsAppClick);
+    return () => document.removeEventListener('click', handleWhatsAppClick);
+  }, [navigate]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<MainContent />} />
+      <Route path="/redirecionamento" element={<PaginaRedirecionamento onComplete={() => navigate('/obrigado')} />} />
+      <Route path="/obrigado" element={<PaginaObrigado onBack={() => navigate('/')} />} />
+    </Routes>
   );
 }
 
