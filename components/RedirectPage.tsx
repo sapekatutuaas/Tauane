@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { constants } from '../constants';
+import { CONTACT_INFO } from '../constants';
 
 export function RedirectPage({ onComplete }: { onComplete: () => void }) {
   const [timeLeft, setTimeLeft] = useState(5);
@@ -10,7 +10,7 @@ export function RedirectPage({ onComplete }: { onComplete: () => void }) {
     }, 1000);
 
     const redirectTimeout = setTimeout(() => {
-      window.open(constants.whatsappLink, '_blank');
+      window.open(CONTACT_INFO.whatsappLink, '_blank');
       onComplete();
     }, 5000);
 
