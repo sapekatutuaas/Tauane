@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckCircle, ArrowLeft, MessageCircle } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 
-export function ThankYouPage({ onBack }: { onBack: () => void }) {
+export function PaginaObrigado({ onBack }: { onBack: () => void }) {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 text-center">
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-slate-100">

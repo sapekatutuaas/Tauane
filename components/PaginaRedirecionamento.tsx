@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CONTACT_INFO } from '../constants';
 
-export function RedirectPage({ onComplete }: { onComplete: () => void }) {
+export function PaginaRedirecionamento({ onComplete }: { onComplete: () => void }) {
   const [timeLeft, setTimeLeft] = useState(5);
 
   useEffect(() => {

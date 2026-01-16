@@ -6,8 +6,8 @@ import { Services } from './components/Services';
 import { WhyUs } from './components/WhyUs';
 import { Process } from './components/Process';
 import { Footer } from './components/Footer';
-import { RedirectPage } from './components/RedirectPage';
-import { ThankYouPage } from './components/ThankYouPage';
+import { PaginaRedirecionamento } from './components/PaginaRedirecionamento';
+import { PaginaObrigado } from './components/PaginaObrigado';
 
 function App() {
   const [view, setView] = useState<'main' | 'redirect' | 'thankyou'>('main');
@@ -28,11 +28,11 @@ function App() {
   }, []);
 
   if (view === 'redirect') {
-    return <RedirectPage onComplete={() => setView('thankyou')} />;
+    return <PaginaRedirecionamento onComplete={() => setView('thankyou')} />;
   }
 
   if (view === 'thankyou') {
-    return <ThankYouPage onBack={() => setView('main')} />;
+    return <PaginaObrigado onBack={() => setView('main')} />;
   }
 
   return (
