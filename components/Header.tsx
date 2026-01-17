@@ -97,12 +97,16 @@ export const Header: React.FC = () => {
           ))}
           
           <div className="pt-4">
-            <Button fullWidth onClick={() => setIsMobileMenuOpen(false)}>
+            <a 
+              href="./redirecionamento/"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold transition-all duration-300 rounded shadow-md uppercase tracking-wider transform hover:-translate-y-0.5 cursor-pointer bg-brand-gold hover:bg-brand-goldLight text-brand-navy border border-transparent w-full"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <span className="flex items-center gap-2 justify-center">
                 <Phone size={18} />
                 (31) 99771-4068
               </span>
-            </Button>
+            </a>
             
             <p className="text-center text-gray-500 text-sm mt-8">
               Rua Mato Grosso, nº. 355<br/>Barro Preto, Belo Horizonte/MG

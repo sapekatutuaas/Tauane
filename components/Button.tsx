@@ -25,7 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <a 
-      href="redirecionamento/"
+      href="./redirecionamento/"
       className={`${baseStyles} ${variants[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
       onClick={onClick}
     >
