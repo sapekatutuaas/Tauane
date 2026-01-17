@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/direito-da-familia/',
+      base: './',
       server: {
         port: 5000,
         host: '0.0.0.0',
