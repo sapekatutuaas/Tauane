@@ -8,8 +8,8 @@ export const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://img.freepik.com/fotos-gratis/casal-de-close-up-se-divorciando_23-2148542278.jpg?t=st=1768406513~exp=1768410113~hmac=d63e83192db73e6bf65cc7fe3992d9eeb4dc23b89579c9ca2bb2f64abe68a0f0&w=1480" 
-          alt="Casal em processo de separação - Direito de Família" 
+          src="./hero-bg.png" 
+          alt="Acordo de Divórcio - Direito de Família" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-brand-navy/60"></div>
