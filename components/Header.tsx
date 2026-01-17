@@ -47,13 +47,17 @@ export const Header: React.FC = () => {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a 
+            <button 
               key={link.name} 
-              href={link.href} 
-              className={`text-sm font-medium tracking-wide transition-colors ${navLinkColor}`}
+              onClick={() => {
+                const id = link.href.replace('#', '');
+                const element = document.getElementById(id);
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`text-sm font-medium tracking-wide transition-colors cursor-pointer ${navLinkColor}`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <Button variant="primary" className="!px-6 !py-2 !text-sm shadow-none">
             Falar com Advogado
@@ -78,14 +82,18 @@ export const Header: React.FC = () => {
       >
         <div className="flex flex-col h-full justify-center px-8 space-y-8">
           {navLinks.map((link) => (
-            <a 
+            <button 
               key={link.name} 
-              href={link.href}
-              className="text-2xl font-serif font-medium text-white hover:text-brand-gold transition-colors border-b border-white/10 pb-4"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                const id = link.href.replace('#', '');
+                const element = document.getElementById(id);
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="text-2xl font-serif font-medium text-white hover:text-brand-gold transition-colors border-b border-white/10 pb-4 text-left cursor-pointer"
             >
               {link.name}
-            </a>
+            </button>
           ))}
           
           <div className="pt-4">

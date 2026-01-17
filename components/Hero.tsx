@@ -35,9 +35,15 @@ export const Hero: React.FC = () => {
               Falar com um advogado agora
             </Button>
             
-            <a href="#atuacao" className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white border border-white/30 rounded hover:bg-white/10 transition-all uppercase tracking-wider">
+            <button 
+              onClick={() => {
+                const element = document.getElementById('atuacao');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white border border-white/30 rounded hover:bg-white/10 transition-all uppercase tracking-wider cursor-pointer"
+            >
               Conheça as Áreas
-            </a>
+            </button>
           </div>
         </div>
       </div>
